@@ -9,6 +9,9 @@ function App() {
     <Box sx={{ display: 'flex', border: '1px solid', height: '100vh' }}>
       <ThemeProvider
         theme={createTheme({
+          typography: {
+            fontSize: 14,
+          },
           components: {
             MuiListItemButton: {
               defaultProps: {

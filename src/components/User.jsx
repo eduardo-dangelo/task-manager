@@ -11,27 +11,29 @@ import ArrowRight from '@mui/icons-material/ArrowRight'
 const User = () => {
   return (
     <ListItem component='div' disablePadding>
-      <ListItemButton
-        sx={{
-          height: 56,
-          paddingY: 5,
-          '& svg': {
-            color: 'rgba(255,255,255,0.8)',
-          },
-        }}
-      >
-        <ListItemIcon>
-          <Avatar src='/broken-image.jpg' />
-        </ListItemIcon>
-        <ListItemText
-          primary='Eduardo DAngelo'
-          primaryTypographyProps={{
-            color: 'primary',
-            fontWeight: 'medium',
-            variant: 'body2',
+      <Tooltip title='View Profile'>
+        <ListItemButton
+          sx={{
+            height: 56,
+            paddingY: 5,
+            '& svg': {
+              color: 'rgba(255,255,255,0.8)',
+            },
           }}
-        />
-      </ListItemButton>
+        >
+          <ListItemIcon>
+            <Avatar src='/broken-image.jpg' />
+          </ListItemIcon>
+          <ListItemText
+            primary='Eduardo DAngelo'
+            primaryTypographyProps={{
+              color: 'primary',
+              fontWeight: 'medium',
+              variant: 'body2',
+            }}
+          />
+        </ListItemButton>
+      </Tooltip>
       <Tooltip title='Log Out'>
         <IconButton
           size='large'

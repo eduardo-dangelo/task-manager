@@ -1,24 +1,36 @@
 import React from 'react'
 import Box from '@mui/material/Box'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemText from '@mui/material/ListItemText'
-import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import People from '@mui/icons-material/People'
-import Dns from '@mui/icons-material/Dns'
-import PermMedia from '@mui/icons-material/PermMedia'
-import FolderOpenIcon from '@mui/icons-material/FolderOpen'
-import DocumentScannerIcon from '@mui/icons-material/DocumentScanner'
-import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck'
+import IconButton from '@mui/material/IconButton'
+import Tooltip from '@mui/material/Tooltip'
+import { Button, Collapse, InputAdornment, ListItem, TextField } from '@mui/material'
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
+import { TransitionGroup } from 'react-transition-group'
+import { rotate90IconStyle } from './constants'
+import AddListItem from './AddListItem'
+import CollapsableListItem from './CollapsableListItem'
+import CollapsableListTitle from './CollapsableListTitle'
 
-const data = [
-  { icon: <People />, label: '2023 Year goals' },
-  { icon: <Dns />, label: '2022 Year Goals' },
-  { icon: <PermMedia />, label: 'Move House' },
-]
+const data = [{ label: '2023 Year goals' }, { label: '2022 Year Goals' }, { label: 'Move House' }]
 
 const CollapsableList = ({ title = 'Projects', list = data }) => {
+  const [collapsableList, setCollapsableList] = React.useState(list)
   const [open, setOpen] = React.useState(true)
+  const [isAdding, setIsAdding] = React.useState(false)
+
+  const handleToggleList = () => {
+    setOpen(!open)
+    open && setIsAdding(false)
+  }
+
+  const handleAddIconClick = () => {
+    setOpen(true)
+    setIsAdding(true)
+  }
+
+  const handleAddItem = (item) => {
+    setCollapsableList([...collapsableList, { label: item }])
+    setIsAdding(false)
+  }
 
   return (
     <Box
@@ -27,43 +39,27 @@ const CollapsableList = ({ title = 'Projects', list = data }) => {
         pb: open ? 2 : 0,
       }}
     >
-      <ListItemButton
-        alignItems='flex-start'
-        onClick={() => setOpen(!open)}
-        sx={{
-          px: 3,
-          pt: 1.5,
-          pb: 1.5,
-        }}
-      >
-        <FolderOpenIcon sx={{ mr: 2 }} />
-        <ListItemText
-          primary={title}
-          primaryTypographyProps={{
-            fontSize: 15,
-            fontWeight: 'medium',
-            lineHeight: '20px',
-            mb: '2px',
-          }}
-          sx={{ my: 0 }}
-        />
-        <KeyboardArrowDown
-          sx={{
-            mr: -1,
-            transform: open ? 'rotate(-180deg)' : 'rotate(0)',
-            transition: '0.2s',
-          }}
-        />
-      </ListItemButton>
-      {open &&
-        list.map((item) => (
-          <ListItemButton key={item.label} sx={{ py: 0, minHeight: 32, color: 'rgba(255,255,255,.8)' }}>
-            <ListItemIcon sx={{ color: 'inherit', paddingLeft: 1 }}>
-              <LibraryAddCheckIcon />
-            </ListItemIcon>
-            <ListItemText primary={item.label} primaryTypographyProps={{ fontSize: 14, fontWeight: 'medium' }} />
-          </ListItemButton>
-        ))}
+      <ListItem component='div' disablePadding>
+        <CollapsableListTitle onClick={handleToggleList} title={title} open={open} />
+        <Tooltip title='New Project'>
+          <IconButton onClick={handleAddIconClick} size='large' sx={rotate90IconStyle}>
+            <AddCircleOutlineIcon />
+          </IconButton>
+        </Tooltip>
+      </ListItem>
+      <TransitionGroup>
+        {open &&
+          collapsableList.map((item, index) => (
+            <Collapse key={index}>
+              <CollapsableListItem item={item} />
+            </Collapse>
+          ))}
+        {isAdding && (
+          <Collapse>
+            <AddListItem onAdd={handleAddItem} />
+          </Collapse>
+        )}
+      </TransitionGroup>
     </Box>
   )
 }
