@@ -25,7 +25,7 @@ const FireNav = styled(List)({
 const Sidebar = () => {
   const [open, setOpen] = React.useState(true)
   return (
-    <Paper elevation={0} sx={{ maxWidth: sideBarMaxWidth, borderRadius: 0 }}>
+    <Paper elevation={0} sx={{ width: sideBarMaxWidth, borderRadius: 0 }}>
       <FireNav component='nav' disablePadding>
         <Logo />
         <Divider />

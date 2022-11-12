@@ -23,12 +23,12 @@ const CollapsableList = ({ title = 'Projects', list = data }) => {
   }
 
   const handleAddIconClick = () => {
-    setOpen(true)
     setIsAdding(true)
   }
 
   const handleAddItem = (item) => {
     setCollapsableList([...collapsableList, { label: item }])
+    !open && setOpen(true)
     setIsAdding(false)
   }
 

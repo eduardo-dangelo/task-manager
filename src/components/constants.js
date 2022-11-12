@@ -16,7 +16,7 @@ const rotate90IconStyle = {
 }
 
 const fontSize = 14
-const sideBarMaxWidth = 286
+const sideBarMaxWidth = 280
 const escapeKeyCode = 27
 
 export { rotate90IconStyle, fontSize, sideBarMaxWidth, escapeKeyCode }
