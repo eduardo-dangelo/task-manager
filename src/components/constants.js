@@ -47,6 +47,7 @@ const routes = {
   signUp: '/sign-up',
   forgotPassword: '/forgot-password',
   project: '/project/:id',
+  projectId: (id) => `/project/${id}`,
 }
 
 export { rotate90IconStyle, fontSize, sideBarMaxWidth, escapeKeyCode, theme, routes }

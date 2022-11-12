@@ -9,8 +9,13 @@ import { rotate90IconStyle } from '../../constants'
 import AddListItem from './AddListItem'
 import CollapsableListItem from './CollapsableListItem'
 import CollapsableListTitle from './CollapsableListTitle'
+import uuid from 'react-uuid'
 
-const data = [{ label: '2023 Year goals' }, { label: '2022 Year Goals' }, { label: 'Move House' }]
+const data = [
+  { id: uuid(), label: '2023 Year goals' },
+  { id: uuid(), label: '2022 Year Goals' },
+  { id: uuid(), label: 'Move House' },
+]
 
 const CollapsableList = ({ title = 'Projects', list = data }) => {
   const [collapsableList, setCollapsableList] = useState(list)
@@ -27,7 +32,7 @@ const CollapsableList = ({ title = 'Projects', list = data }) => {
   }
 
   const handleAddItem = (item) => {
-    setCollapsableList([...collapsableList, { label: item }])
+    setCollapsableList([...collapsableList, { label: item, id: uuid() }])
     !open && setOpen(true)
     setIsAdding(false)
   }
@@ -54,7 +59,7 @@ const CollapsableList = ({ title = 'Projects', list = data }) => {
       <TransitionGroup>
         {open &&
           collapsableList.map((item, index) => (
-            <Collapse key={index}>
+            <Collapse key={item.id}>
               <CollapsableListItem item={item} />
             </Collapse>
           ))}
