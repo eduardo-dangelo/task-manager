@@ -6,12 +6,19 @@ import AddIcon from '@mui/icons-material/Add'
 import { escapeKeyCode, fontSize, rotate90IconStyle, sideBarMaxWidth } from './constants'
 import LibraryAddCheckOutlinedIcon from '@mui/icons-material/LibraryAddCheckOutlined'
 
-const AddListItem = ({ onAdd = () => {}, onCancel = () => {} }) => {
+const AddListItem = ({ onAdd = () => {}, onCancel = () => {}, list = [] }) => {
   const [value, setValue] = useState('')
   const [error, setError] = useState('')
 
   const submit = (fieldValue) => {
-    fieldValue ? onAdd(fieldValue) : setError('Field cannot be empty.')
+    let errorMessage = ''
+
+    if (!fieldValue) errorMessage = 'Field cannot be empty.'
+    if (fieldValue && list.find(({ label }) => label === fieldValue)) {
+      errorMessage = 'Name already exist.'
+    }
+
+    errorMessage ? setError(errorMessage) : onAdd(fieldValue)
   }
 
   const handleChange = (e) => {

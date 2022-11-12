@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import Tooltip from '@mui/material/Tooltip'
@@ -13,9 +13,9 @@ import CollapsableListTitle from './CollapsableListTitle'
 const data = [{ label: '2023 Year goals' }, { label: '2022 Year Goals' }, { label: 'Move House' }]
 
 const CollapsableList = ({ title = 'Projects', list = data }) => {
-  const [collapsableList, setCollapsableList] = React.useState(list)
-  const [open, setOpen] = React.useState(true)
-  const [isAdding, setIsAdding] = React.useState(false)
+  const [collapsableList, setCollapsableList] = useState(list)
+  const [open, setOpen] = useState(true)
+  const [isAdding, setIsAdding] = useState(false)
 
   const handleToggleList = () => {
     setOpen(!open)
@@ -60,7 +60,7 @@ const CollapsableList = ({ title = 'Projects', list = data }) => {
           ))}
         {isAdding && (
           <Collapse>
-            <AddListItem onAdd={handleAddItem} onCancel={handleCancelAddItem} />
+            <AddListItem onAdd={handleAddItem} onCancel={handleCancelAddItem} list={collapsableList} />
           </Collapse>
         )}
       </TransitionGroup>
