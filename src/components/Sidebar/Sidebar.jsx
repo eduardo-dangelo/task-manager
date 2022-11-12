@@ -27,7 +27,10 @@ const FireNav = styled(List)({
 const Sidebar = () => {
   const [open, setOpen] = React.useState(true)
   return (
-    <Paper elevation={0} sx={{ width: sideBarMaxWidth, borderRadius: 0 }}>
+    <Paper
+      elevation={0}
+      sx={{ width: sideBarMaxWidth, minWidth: sideBarMaxWidth, borderRadius: 0, flex: 1 }}
+    >
       <FireNav component='nav' disablePadding>
         <Link to='/'>
           <ListItemButton>
