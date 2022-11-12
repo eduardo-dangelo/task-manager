@@ -2,12 +2,12 @@ import React from 'react'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import AssignmentTurnedInRoundedIcon from '@mui/icons-material/AssignmentTurnedInRounded'
 import ListItemText from '@mui/material/ListItemText'
-import ListItemButton from '@mui/material/ListItemButton'
+import { Box } from '@mui/material'
 
 const Logo = () => {
   return (
-    <ListItemButton component='a' href='#customized-list'>
-      <ListItemIcon sx={{ fontSize: 20 }}>
+    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+      <ListItemIcon sx={{ fontSize: 20, display: 'flex', alignItems: 'center' }}>
         <AssignmentTurnedInRoundedIcon color='secondary' fontSize='large' />️
       </ListItemIcon>
       <ListItemText
@@ -19,7 +19,7 @@ const Logo = () => {
           letterSpacing: 0,
         }}
       />
-    </ListItemButton>
+    </Box>
   )
 }
 
