@@ -13,7 +13,10 @@ const CollapsableListItem = ({ item }) => {
         <ListItemIcon sx={{ color: 'inherit', paddingLeft: 1 }}>
           <LibraryAddCheckIcon />
         </ListItemIcon>
-        <ListItemText primary={item?.label} primaryTypographyProps={{ fontSize, fontWeight: 'medium' }} />
+        <ListItemText
+          primary={item?.label}
+          primaryTypographyProps={{ fontSize, fontWeight: 'medium' }}
+        />
       </ListItemButton>
     </Link>
   )
