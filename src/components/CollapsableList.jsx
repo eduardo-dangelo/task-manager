@@ -2,7 +2,7 @@ import React from 'react'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import Tooltip from '@mui/material/Tooltip'
-import { Button, Collapse, InputAdornment, ListItem, TextField } from '@mui/material'
+import { Collapse, ListItem } from '@mui/material'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import { TransitionGroup } from 'react-transition-group'
 import { rotate90IconStyle } from './constants'
@@ -32,6 +32,10 @@ const CollapsableList = ({ title = 'Projects', list = data }) => {
     setIsAdding(false)
   }
 
+  const handleCancelAddItem = () => {
+    setIsAdding(false)
+  }
+
   return (
     <Box
       sx={{
@@ -56,7 +60,7 @@ const CollapsableList = ({ title = 'Projects', list = data }) => {
           ))}
         {isAdding && (
           <Collapse>
-            <AddListItem onAdd={handleAddItem} />
+            <AddListItem onAdd={handleAddItem} onCancel={handleCancelAddItem} />
           </Collapse>
         )}
       </TransitionGroup>
