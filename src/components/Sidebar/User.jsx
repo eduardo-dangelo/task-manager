@@ -17,7 +17,7 @@ const User = () => {
           <ListItemButton
             sx={{
               height: 56,
-              paddingY: 5,
+              paddingY: 4,
               '& svg': {
                 color: 'rgba(255,255,255,0.8)',
               },

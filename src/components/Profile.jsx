@@ -62,12 +62,10 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 
 const Profile = () => {
   return (
-    <PageLayout>
+    <PageLayout title='Profile'>
       <Box component='form' noValidate onSubmit={() => {}}>
         <Box mb={5}>
-          <Typography component='h1' variant='h6' mb={2}>
-            Profile Picture
-          </Typography>
+          <Typography mb={2}>Profile Picture</Typography>
 
           <Badge
             overlap='circular'
@@ -89,9 +87,7 @@ const Profile = () => {
           </Badge>
         </Box>
 
-        <Typography component='h1' variant='h6' mb={2}>
-          Account Info
-        </Typography>
+        <Typography mb={2}>Account Info</Typography>
         <Grid container spacing={2} xs={12} sm={6} mb={5}>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -134,16 +130,20 @@ const Profile = () => {
             />
           </Grid>
           <Grid item xs={12}>
+            <FormControlLabel
+              control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+              label='Theme | Dark'
+            />
+          </Grid>
+          <Grid item xs={12}>
             <Button variant='contained' sx={{ mb: 2 }}>
               Save
             </Button>
           </Grid>
         </Grid>
 
-        <Typography component='h1' variant='h6' mb={2}>
-          Update Password
-        </Typography>
-        <Grid container spacing={2} xs={12} sm={6} mb={5}>
+        <Typography mb={2}>Update Password</Typography>
+        <Grid container spacing={2} xs={12} sm={6}>
           <Grid item xs={12}>
             <TextField
               required
@@ -174,14 +174,6 @@ const Profile = () => {
             </Button>
           </Grid>
         </Grid>
-
-        <Typography component='h1' variant='h6' mb={2}>
-          Theme
-        </Typography>
-        <FormControlLabel
-          control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
-          label='MUI switch'
-        />
       </Box>
     </PageLayout>
   )

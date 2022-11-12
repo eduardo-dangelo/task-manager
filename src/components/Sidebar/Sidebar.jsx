@@ -29,7 +29,11 @@ const Sidebar = () => {
   return (
     <Paper
       elevation={0}
-      sx={{ width: sideBarMaxWidth, minWidth: sideBarMaxWidth, borderRadius: 0, flex: 1 }}
+      sx={{
+        width: sideBarMaxWidth,
+        minWidth: sideBarMaxWidth,
+        borderRadius: 0,
+      }}
     >
       <FireNav component='nav' disablePadding>
         <Link to='/'>
