@@ -3,7 +3,7 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import { InputAdornment, ListItem, TextField, Tooltip } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
 import AddIcon from '@mui/icons-material/Add'
-import { escapeKeyCode, fontSize, rotate90IconStyle, sideBarMaxWidth } from './constants'
+import { escapeKeyCode, fontSize, rotate90IconStyle, sideBarMaxWidth } from '../../constants'
 import LibraryAddCheckOutlinedIcon from '@mui/icons-material/LibraryAddCheckOutlined'
 
 const AddListItem = ({ onAdd = () => {}, onCancel = () => {}, list = [] }) => {

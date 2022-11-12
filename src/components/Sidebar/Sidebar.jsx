@@ -5,8 +5,8 @@ import List from '@mui/material/List'
 import Paper from '@mui/material/Paper'
 import Logo from './Logo'
 import User from './User'
-import CollapsableList from './CollapsableList'
-import { sideBarMaxWidth } from './constants'
+import CollapsableList from './CollapsableList/CollapsableList'
+import { sideBarMaxWidth } from '../constants'
 
 const FireNav = styled(List)({
   '& .MuiListItemButton-root': {

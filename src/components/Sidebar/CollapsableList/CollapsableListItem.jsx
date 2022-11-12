@@ -3,7 +3,7 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemButton from '@mui/material/ListItemButton'
-import { fontSize } from './constants'
+import { fontSize } from '../../constants'
 
 const CollapsableListItem = ({ item }) => {
   return (

@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Box } from '@mui/material'
-import Sidebar from './components/Sidebar'
+import Sidebar from './components/Sidebar/Sidebar'
 
 function App() {
   return (
