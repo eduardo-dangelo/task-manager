@@ -37,7 +37,7 @@ const Sidebar = () => {
     >
       <FireNav component='nav' disablePadding>
         <Link to='/'>
-          <ListItemButton>
+          <ListItemButton sx={{ py: 2, maxHeight: 56 }}>
             <Logo />
           </ListItemButton>
         </Link>

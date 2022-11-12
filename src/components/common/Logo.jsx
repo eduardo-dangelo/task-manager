@@ -17,6 +17,7 @@ const Logo = () => {
           fontSize: 20,
           fontWeight: 'medium',
           letterSpacing: 0,
+          py: 0,
         }}
       />
     </Box>
