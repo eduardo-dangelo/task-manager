@@ -9,7 +9,6 @@ import Link from '@mui/material/Link'
 import Box from '@mui/material/Box'
 import { Avatar, Badge, IconButton, Switch, Typography } from '@mui/material'
 import { PhotoCamera } from '@mui/icons-material'
-import { deepOrange } from '@mui/material/colors'
 import styled from '@emotion/styled'
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({

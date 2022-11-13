@@ -25,7 +25,6 @@ const FireNav = styled(List)({
 })
 
 const Sidebar = () => {
-  const [open, setOpen] = React.useState(true)
   return (
     <Paper
       elevation={0}

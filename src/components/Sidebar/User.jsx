@@ -8,8 +8,13 @@ import IconButton from '@mui/material/IconButton'
 import LogoutIcon from '@mui/icons-material/Logout'
 import ArrowRight from '@mui/icons-material/ArrowRight'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
 const User = () => {
+  const count = useSelector((state) => state.counter.value)
+  const dispatch = useDispatch()
+  console.log('count', count)
+
   return (
     <ListItem component='div' disablePadding>
       <Tooltip title='View Profile'>
