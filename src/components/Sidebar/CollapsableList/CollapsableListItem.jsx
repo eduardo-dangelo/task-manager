@@ -10,7 +10,14 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import AddListItem from './AddListItem'
 
-const CollapsableListItem = ({ item, list = [], onUpdate = () => {}, onDelete = () => {} }) => {
+const CollapsableListItem = ({
+  item,
+  list = [],
+  onUpdate = () => {},
+  onDelete = () => {},
+  selected = false,
+  ...props
+}) => {
   const [editMode, setEditMode] = useState(false)
 
   const visibleOnHover = {
@@ -44,14 +51,16 @@ const CollapsableListItem = ({ item, list = [], onUpdate = () => {}, onDelete = 
           onAdd={handleUpdate}
           scope='edit'
           list={list}
+          selected={selected}
         />
       </Collapse>
     )
   }
 
   return (
-    <Link to={routes.projectId(item.id)}>
+    <Link to={routes.projectId(item.id)} {...props}>
       <ListItemButton
+        selected={selected}
         sx={{
           py: 0.8,
           paddingRight: '0 !important',

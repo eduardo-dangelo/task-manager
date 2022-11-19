@@ -21,6 +21,7 @@ const CollapsableList = ({ title = 'Projects', list = data }) => {
   const [collapsableList, setCollapsableList] = useState(list)
   const [open, setOpen] = useState(true)
   const [isAdding, setIsAdding] = useState(false)
+  const [activeItem, setActiveItem] = useState('')
 
   const handleToggleList = () => {
     setOpen(!open)
@@ -77,6 +78,8 @@ const CollapsableList = ({ title = 'Projects', list = data }) => {
                 list={collapsableList}
                 onUpdate={(value) => handleUpdateItem(value, index)}
                 onDelete={() => handleDeleteItem(index)}
+                onClick={() => setActiveItem(item.id)}
+                selected={activeItem === item.id}
               />
             </Collapse>
           ))}

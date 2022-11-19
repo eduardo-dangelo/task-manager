@@ -13,6 +13,7 @@ const AddListItem = ({
   initialValue,
   onBlur = () => {},
   scope = 'create',
+  selected = false,
 }) => {
   const [value, setValue] = useState(initialValue)
   const [error, setError] = useState('')
@@ -59,6 +60,7 @@ const AddListItem = ({
         maxWidth: sideBarMaxWidth,
         alignItems: 'center',
       }}
+      selected={selected}
     >
       <ListItemIcon sx={{ color: 'inherit', paddingLeft: 1, marginRight: '0' }}>
         <LibraryAddCheckOutlinedIcon />
