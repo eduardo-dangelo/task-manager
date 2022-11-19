@@ -6,8 +6,15 @@ import AddIcon from '@mui/icons-material/Add'
 import { escapeKeyCode, fontSize, rotate90IconStyle, sideBarMaxWidth } from '../../constants'
 import LibraryAddCheckOutlinedIcon from '@mui/icons-material/LibraryAddCheckOutlined'
 
-const AddListItem = ({ onAdd = () => {}, onCancel = () => {}, list = [] }) => {
-  const [value, setValue] = useState('')
+const AddListItem = ({
+  onAdd = () => {},
+  onCancel = () => {},
+  list = [],
+  initialValue,
+  onBlur = () => {},
+  scope = 'create',
+}) => {
+  const [value, setValue] = useState(initialValue)
   const [error, setError] = useState('')
 
   const submit = (fieldValue) => {
@@ -44,18 +51,27 @@ const AddListItem = ({ onAdd = () => {}, onCancel = () => {}, list = [] }) => {
     <ListItem
       sx={{
         fontSize,
-        py: 0,
+        pt: 0.8,
+        pb: error ? 2 : 0.8,
         pl: 3,
         minHeight: 32,
         color: 'rgba(255,255,255,.8)',
         maxWidth: sideBarMaxWidth,
-        alignItems: 'baseline',
+        alignItems: 'center',
       }}
     >
-      <ListItemIcon sx={{ color: 'inherit', paddingLeft: 1 }}>
+      <ListItemIcon sx={{ color: 'inherit', paddingLeft: 1, marginRight: '0' }}>
         <LibraryAddCheckOutlinedIcon />
       </ListItemIcon>
       <TextField
+        sx={{
+          marginLeft: -1,
+          '& input': {
+            paddingLeft: 1.2,
+            py: 0.6,
+            fontSize: 14,
+          },
+        }}
         error={!!error}
         autoFocus
         size='small'
@@ -63,15 +79,25 @@ const AddListItem = ({ onAdd = () => {}, onCancel = () => {}, list = [] }) => {
         onChange={handleChange}
         onKeyDown={handleKeyPress}
         helperText={error}
+        FormHelperTextProps={{
+          sx: {
+            fontSize: 10,
+            mb: -1,
+            position: 'absolute',
+            bottom: -10,
+          },
+        }}
         InputProps={{
+          onBlur,
           endAdornment: (
             <InputAdornment position='end'>
-              <Tooltip title='Add'>
+              <Tooltip title={scope === 'create' ? 'Add' : 'Update'}>
                 <IconButton
                   aria-label='toggle password visibility'
                   onClick={handleAddItem}
                   edge='end'
                   sx={rotate90IconStyle}
+                  size='small'
                 >
                   <AddIcon />
                 </IconButton>

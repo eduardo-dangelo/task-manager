@@ -41,6 +41,12 @@ const CollapsableList = ({ title = 'Projects', list = data }) => {
     setIsAdding(false)
   }
 
+  const handleUpdateItem = (value, index) => {
+    const listClone = JSON.parse(JSON.stringify(collapsableList))
+    listClone[index].label = value
+    setCollapsableList(listClone)
+  }
+
   return (
     <Box
       sx={{
@@ -60,12 +66,20 @@ const CollapsableList = ({ title = 'Projects', list = data }) => {
         {open &&
           collapsableList.map((item, index) => (
             <Collapse key={item.id}>
-              <CollapsableListItem item={item} />
+              <CollapsableListItem
+                item={item}
+                list={collapsableList}
+                onUpdate={(value) => handleUpdateItem(value, index)}
+              />
             </Collapse>
           ))}
         {isAdding && (
           <Collapse>
-            <AddListItem onAdd={handleAddItem} onCancel={handleCancelAddItem} list={collapsableList} />
+            <AddListItem
+              onAdd={handleAddItem}
+              onCancel={handleCancelAddItem}
+              list={collapsableList}
+            />
           </Collapse>
         )}
       </TransitionGroup>
