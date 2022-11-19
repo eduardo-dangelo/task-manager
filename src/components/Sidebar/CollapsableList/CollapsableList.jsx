@@ -47,6 +47,12 @@ const CollapsableList = ({ title = 'Projects', list = data }) => {
     setCollapsableList(listClone)
   }
 
+  const handleDeleteItem = (index) => {
+    const listClone = JSON.parse(JSON.stringify(collapsableList))
+    const newList = listClone.filter((item, i) => i !== index && item)
+    setCollapsableList(newList)
+  }
+
   return (
     <Box
       sx={{
@@ -70,6 +76,7 @@ const CollapsableList = ({ title = 'Projects', list = data }) => {
                 item={item}
                 list={collapsableList}
                 onUpdate={(value) => handleUpdateItem(value, index)}
+                onDelete={() => handleDeleteItem(index)}
               />
             </Collapse>
           ))}

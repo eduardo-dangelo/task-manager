@@ -10,7 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import AddListItem from './AddListItem'
 
-const CollapsableListItem = ({ item, list = [], onUpdate = () => {} }) => {
+const CollapsableListItem = ({ item, list = [], onUpdate = () => {}, onDelete = () => {} }) => {
   const [editMode, setEditMode] = useState(false)
 
   const visibleOnHover = {
@@ -83,6 +83,7 @@ const CollapsableListItem = ({ item, list = [], onUpdate = () => {} }) => {
           aria-label='delete'
           size='small'
           sx={{ mr: 0.5 }}
+          onClick={onDelete}
         >
           <DeleteIcon fontSize='small' />
         </IconButton>
