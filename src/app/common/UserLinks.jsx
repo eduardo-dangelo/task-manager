@@ -10,7 +10,7 @@ import ArrowRight from '@mui/icons-material/ArrowRight'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
-const User = () => {
+const UserLinks = () => {
   const count = useSelector((state) => state.counter.value)
   const dispatch = useDispatch()
   console.log('count', count)
@@ -83,4 +83,4 @@ const User = () => {
   )
 }
 
-export default User
+export default UserLinks

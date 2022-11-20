@@ -4,7 +4,7 @@ import Divider from '@mui/material/Divider'
 import List from '@mui/material/List'
 import Paper from '@mui/material/Paper'
 import Logo from './Logo'
-import User from './User'
+import UserLinks from './UserLinks'
 import CollapsableList from './CollapsableList/CollapsableList'
 import { sideBarMaxWidth } from '../constants'
 import { ListItemButton } from '@mui/material'
@@ -41,7 +41,7 @@ const Sidebar = () => {
           </ListItemButton>
         </Link>
         <Divider />
-        <User />
+        <UserLinks />
         <Divider />
         <CollapsableList />
       </FireNav>

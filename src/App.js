@@ -1,15 +1,15 @@
 import React from 'react'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Box } from '@mui/material'
-import Sidebar from './components/common/Sidebar'
-import { routes, theme } from './components/constants'
+import Sidebar from './app/common/Sidebar'
+import { routes, theme } from './app/constants'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import LogInPage from './components/pages/LogInPage'
-import SignUpPage from './components/pages/SignUpPage'
-import ForgotPasswordPage from './components/pages/ForgotPasswordPage'
-import ProjectPage from './components/pages/ProjectPage'
-import ProfilePage from './components/pages/ProfilePage'
-import DashboardPage from './components/pages/DashboardPage'
+import LogInPage from './app/pages/LogInPage'
+import SignUpPage from './app/pages/SignUpPage'
+import ForgotPasswordPage from './app/pages/ForgotPasswordPage'
+import ProjectPage from './app/pages/ProjectPage'
+import ProfilePage from './app/pages/ProfilePage'
+import DashboardPage from './app/pages/DashboardPage'
 
 function App() {
   return (
