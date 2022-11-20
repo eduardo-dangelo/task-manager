@@ -1,9 +1,10 @@
 import React from 'react'
-import PageLayout from './common/PageLayout'
+import PageLayout from './PageLayout'
 import { Box, Tab, Tabs, Typography } from '@mui/material'
 import TabContext from '@mui/lab/TabContext'
 import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
+import OkRs from '../features/OKRs'
 
 const ProjectPage = () => {
   const [value, setValue] = React.useState('1')
@@ -24,7 +25,9 @@ const ProjectPage = () => {
               <Tab label='Config' value='3' />
             </TabList>
           </Box>
-          <TabPanel value='1'>Item One</TabPanel>
+          <TabPanel value='1'>
+            <OkRs />
+          </TabPanel>
           <TabPanel value='2'>Item Two</TabPanel>
           <TabPanel value='3'>Item Three</TabPanel>
         </TabContext>

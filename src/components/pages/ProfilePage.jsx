@@ -1,5 +1,5 @@
 import React from 'react'
-import PageLayout from './common/PageLayout'
+import PageLayout from './PageLayout'
 import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -59,7 +59,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }))
 
-const Profile = () => {
+const ProfilePage = () => {
   return (
     <PageLayout title='Profile'>
       <Box component='form' noValidate onSubmit={() => {}}>
@@ -178,4 +178,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default ProfilePage

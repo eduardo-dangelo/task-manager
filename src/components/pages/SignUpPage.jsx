@@ -17,7 +17,7 @@ import Copyright from '../common/Copyright'
 import { useNavigate } from 'react-router-dom'
 import { routes } from '../constants'
 
-export default function SignUp() {
+export default function SignUpPage() {
   const navigate = useNavigate()
 
   const handleSubmit = (event) => {
@@ -72,7 +72,14 @@ export default function SignUp() {
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField required fullWidth id='email' label='Email Address' name='email' autoComplete='email' />
+              <TextField
+                required
+                fullWidth
+                id='email'
+                label='Email Address'
+                name='email'
+                autoComplete='email'
+              />
             </Grid>
             <Grid item xs={12}>
               <TextField

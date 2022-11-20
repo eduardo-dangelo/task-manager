@@ -1,8 +1,8 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import Sidebar from '../Sidebar/Sidebar'
+import Sidebar from '../common/Sidebar'
 import CssBaseline from '@mui/material/CssBaseline'
-import Breadcrumb from './Breadcrumb'
+import Breadcrumb from '../common/Breadcrumb'
 
 const PageLayout = ({ children, title }) => {
   return (

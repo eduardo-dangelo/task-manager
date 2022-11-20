@@ -47,13 +47,13 @@ const AddListItem = ({
       onCancel()
     }
   }
-
+  const PADDING_Y = 0.4
   return (
     <ListItem
       sx={{
         fontSize,
-        pt: 0.8,
-        pb: error ? 2 : 0.8,
+        pt: PADDING_Y,
+        pb: error ? 2 : PADDING_Y,
         pl: 3,
         minHeight: 32,
         color: 'rgba(255,255,255,.8)',
@@ -70,7 +70,7 @@ const AddListItem = ({
           marginLeft: -1,
           '& input': {
             paddingLeft: 1.2,
-            py: 0.6,
+            py: 1,
             fontSize: 14,
           },
         }}

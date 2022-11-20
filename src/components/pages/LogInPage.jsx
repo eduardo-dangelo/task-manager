@@ -12,8 +12,12 @@ import Typography from '@mui/material/Typography'
 import { Container, CssBaseline } from '@mui/material'
 import Logo from '../common/Logo'
 import Copyright from '../common/Copyright'
+import { routes } from '../constants'
+import { useNavigate } from 'react-router-dom'
 
-const ForgotPassword = () => {
+const LogInPage = () => {
+  const navigate = useNavigate()
+
   const handleSubmit = (event) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
@@ -21,6 +25,7 @@ const ForgotPassword = () => {
       email: data.get('email'),
       password: data.get('password'),
     })
+    navigate(routes.dashboard)
   }
 
   return (
@@ -40,7 +45,7 @@ const ForgotPassword = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component='h3' variant='h6'>
-          Forgot Password
+          Sign in
         </Typography>
         <Box component='form' onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
@@ -53,13 +58,33 @@ const ForgotPassword = () => {
             autoComplete='email'
             autoFocus
           />
+          <TextField
+            margin='normal'
+            required
+            fullWidth
+            name='password'
+            label='Password'
+            type='password'
+            id='password'
+            autoComplete='current-password'
+          />
+          <FormControlLabel
+            control={<Checkbox value='remember' color='primary' />}
+            label='Remember me'
+          />
           <Button type='submit' fullWidth variant='contained' sx={{ mt: 3, mb: 2 }}>
-            Reset Password
+            Sign In
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href='/login' variant='body2'>
-                Login
+              <Link href='/forgot-password' variant='body2'>
+                Forgot password?
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link href='/sign-up' variant='body2'>
+                {/* eslint-disable-next-line react/no-unescaped-entities */}
+                Don't have an account? Sign Up
               </Link>
             </Grid>
           </Grid>
@@ -71,4 +96,4 @@ const ForgotPassword = () => {
   )
 }
 
-export default ForgotPassword
+export default LogInPage
