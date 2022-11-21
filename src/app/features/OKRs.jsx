@@ -6,6 +6,8 @@ import IconButton from '@mui/material/IconButton'
 import { rotate90IconStyle } from '../constants'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import Tooltip from '@mui/material/Tooltip'
+import Loader from '../common/Loader'
+import ProgressBar from '../common/ProgressBar'
 
 const OkRs = () => {
   return (
@@ -27,9 +29,13 @@ const OkRs = () => {
           </IconButton>
         </Tooltip>
       </Box>
-      <Card sx={{ mb: 1, p: 2 }}>
-        Finish some bullshit task
-        <LinearProgress value={30} />
+      <Card sx={{ mb: 1, p: 2, display: 'flex' }}>
+        <Box flex={2}>
+          <Typography>Finish some bullshit task</Typography>
+        </Box>
+        <Box flex={1}>
+          <ProgressBar value={40} />
+        </Box>
       </Card>
     </Box>
   )
