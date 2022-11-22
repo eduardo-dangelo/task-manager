@@ -9,6 +9,7 @@ import { Button, ButtonGroup, Collapse, IconButton, ListItem } from '@mui/materi
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import AddListItem from './AddListItem'
+import TrashButton from '../TrashButton'
 
 const CollapsableListItem = ({
   item,
@@ -86,16 +87,7 @@ const CollapsableListItem = ({
         >
           <EditIcon fontSize='small' />
         </IconButton>
-        <IconButton
-          className='hidden-button'
-          edge='end'
-          aria-label='delete'
-          size='small'
-          sx={{ mr: 0.5 }}
-          onClick={onDelete}
-        >
-          <DeleteIcon fontSize='small' />
-        </IconButton>
+        <TrashButton className='hidden-button' onDelete={onDelete} />
       </ListItemButton>
     </Link>
   )

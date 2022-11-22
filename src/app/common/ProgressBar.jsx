@@ -40,7 +40,6 @@ const ProgressBar = (props) => {
           {`${Math.round(props.value)}%`}
         </Typography>
       </Box>
-      <Chip label='active' size='small' sx={{ ml: 2 }} />
     </Box>
   )
 }
