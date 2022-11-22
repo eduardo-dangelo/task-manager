@@ -79,6 +79,11 @@ const OkRs = () => {
             </Collapse>
           )
         })}
+        {data.length === 0 && !isAdding && (
+          <Collapse>
+            <Typography p={2}>no OKR found.</Typography>
+          </Collapse>
+        )}
         {isAdding && (
           <Collapse>
             <Card
