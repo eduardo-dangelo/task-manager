@@ -52,6 +52,12 @@ const OkRs = () => {
     setData(newList)
   }
 
+  const handleUpdateOKR = (title, index) => {
+    const newList = JSON.parse(JSON.stringify(data))
+    newList[index].title = title
+    setData(newList)
+  }
+
   return (
     <Box>
       <Box
@@ -72,10 +78,15 @@ const OkRs = () => {
         </Tooltip>
       </Box>
       <TransitionGroup>
-        {data.map(({ id, title, description }) => {
+        {data.map(({ id, title, description }, index) => {
           return (
             <Collapse key={id}>
-              <Okr title={title} description={description} onDelete={() => handleDeleteOKR(id)} />
+              <Okr
+                title={title}
+                description={description}
+                onDelete={() => handleDeleteOKR(id)}
+                onChange={(value) => handleUpdateOKR(value, index)}
+              />
             </Collapse>
           )
         })}

@@ -5,8 +5,9 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import ProgressBar from '../common/ProgressBar'
 import Description from './Description'
 import TrashButton from '../common/TrashButton'
+import OkrTitle from './OKRTitle'
 
-const Okr = ({ title, description, onDelete }) => {
+const Okr = ({ title, description, onDelete, onChange = () => {} }) => {
   const [expanded, setExpanded] = useState(false)
   return (
     <Card sx={{ mb: 1 }}>
@@ -26,7 +27,7 @@ const Okr = ({ title, description, onDelete }) => {
           checkedIcon={<CheckCircleIcon />}
         />
         <Box flex={2} sx={{ cursor: 'pointer' }} onClick={() => setExpanded(!expanded)}>
-          <Typography>{title}</Typography>
+          <OkrTitle value={title} onUpdate={onChange} />
         </Box>
         <Box flex={1}>
           <ProgressBar value={40} />
