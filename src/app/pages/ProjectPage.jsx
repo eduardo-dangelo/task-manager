@@ -6,9 +6,17 @@ import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
 import OkRs from '../features/OKRs'
 import AddToFeature from '../common/AddToFeature'
+import RenderFeature from '../features/RenderFeature'
+import uuid from 'react-uuid'
+
+const feature = {
+  id: uuid(),
+  type: 'okr',
+}
 
 const ProjectPage = () => {
   const [value, setValue] = React.useState('1')
+  const [layout, setLayout] = React.useState([feature])
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
@@ -29,7 +37,9 @@ const ProjectPage = () => {
           <TabPanel value='1'>
             <Grid container spacing={3}>
               <Grid item xs={9}>
-                <OkRs />
+                {layout.map((feature) => (
+                  <RenderFeature key={feature.id} feature={feature} />
+                ))}
               </Grid>
               <Grid item xs={3}>
                 <AddToFeature title='Add to Project' />
