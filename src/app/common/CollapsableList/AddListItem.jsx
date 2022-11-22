@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import ListItemIcon from '@mui/material/ListItemIcon'
-import { InputAdornment, ListItem, TextField, Tooltip } from '@mui/material'
-import IconButton from '@mui/material/IconButton'
-import AddIcon from '@mui/icons-material/Add'
-import { escapeKeyCode, fontSize, rotate90IconStyle, sideBarMaxWidth } from '../../constants'
+import { ListItem } from '@mui/material'
+import { fontSize, sideBarMaxWidth } from '../../constants'
 import LibraryAddCheckOutlinedIcon from '@mui/icons-material/LibraryAddCheckOutlined'
+import AddItem from '../AddItem'
 
 const AddListItem = ({
   onAdd = () => {},
@@ -15,7 +14,6 @@ const AddListItem = ({
   scope = 'create',
   selected = false,
 }) => {
-  const [value, setValue] = useState(initialValue)
   const [error, setError] = useState('')
 
   const submit = (fieldValue) => {
@@ -29,24 +27,6 @@ const AddListItem = ({
     errorMessage ? setError(errorMessage) : onAdd(fieldValue)
   }
 
-  const handleChange = (e) => {
-    error && setError(false)
-    setValue(e.target.value)
-  }
-
-  const handleAddItem = () => {
-    submit(value)
-  }
-
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      submit(value)
-    }
-
-    if (e.keyCode === escapeKeyCode) {
-      onCancel()
-    }
-  }
   const PADDING_Y = 0.4
   return (
     <ListItem
@@ -65,7 +45,13 @@ const AddListItem = ({
       <ListItemIcon sx={{ color: 'inherit', paddingLeft: 1, marginRight: '0' }}>
         <LibraryAddCheckOutlinedIcon />
       </ListItemIcon>
-      <TextField
+      <AddItem
+        initialValue={initialValue}
+        onBlur={onBlur}
+        onCancel={onCancel}
+        onChange={() => error && setError(false)}
+        onSubmit={submit}
+        error={error}
         sx={{
           marginLeft: -1,
           '& input': {
@@ -73,39 +59,6 @@ const AddListItem = ({
             py: 1,
             fontSize: 14,
           },
-        }}
-        error={!!error}
-        autoFocus
-        size='small'
-        value={value}
-        onChange={handleChange}
-        onKeyDown={handleKeyPress}
-        helperText={error}
-        FormHelperTextProps={{
-          sx: {
-            fontSize: 10,
-            mb: -1,
-            position: 'absolute',
-            bottom: -10,
-          },
-        }}
-        InputProps={{
-          onBlur,
-          endAdornment: (
-            <InputAdornment position='end'>
-              <Tooltip title={scope === 'create' ? 'Add' : 'Update'}>
-                <IconButton
-                  aria-label='toggle password visibility'
-                  onClick={handleAddItem}
-                  edge='end'
-                  sx={rotate90IconStyle}
-                  size='small'
-                >
-                  <AddIcon />
-                </IconButton>
-              </Tooltip>
-            </InputAdornment>
-          ),
         }}
       />
     </ListItem>

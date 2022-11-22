@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Collapse, Typography } from '@mui/material'
+import { Box, Card, Collapse, Typography } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
 import { rotate90IconStyle } from '../constants'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
@@ -7,6 +7,8 @@ import Tooltip from '@mui/material/Tooltip'
 import Okr from './Okr'
 import uuid from 'react-uuid'
 import { TransitionGroup } from 'react-transition-group'
+import AddItem from '../common/AddItem'
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked'
 
 const mockOKR = {
   id: 1,
@@ -16,14 +18,33 @@ const mockOKR = {
 
 const OkRs = () => {
   const [data, setData] = useState([mockOKR])
+  const [isAdding, setIsAdding] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleAddOKR = () => {
+  const handleAddOKR = (value) => {
     const initialValues = {
       id: uuid(),
-      title: 'Add Title',
+      title: value,
       description: '<p>Add description</p>',
     }
     setData([...data, initialValues])
+    setIsAdding(false)
+  }
+
+  const submit = (fieldValue) => {
+    let errorMessage = ''
+    if (!fieldValue) errorMessage = 'Field cannot be empty.'
+    errorMessage ? setError(errorMessage) : handleAddOKR(fieldValue)
+  }
+
+  const handleClickAddOKR = () => {
+    setIsAdding(true)
+    error && setError(false)
+  }
+
+  const handleDismiss = () => {
+    setIsAdding(false)
+    error && setError(false)
   }
 
   const handleDeleteOKR = (id) => {
@@ -45,7 +66,7 @@ const OkRs = () => {
           🏁 OKRS
         </Typography>
         <Tooltip title='New OKR'>
-          <IconButton size='large' sx={rotate90IconStyle} onClick={handleAddOKR}>
+          <IconButton size='large' sx={rotate90IconStyle} onClick={handleClickAddOKR}>
             <AddCircleOutlineIcon />
           </IconButton>
         </Tooltip>
@@ -58,6 +79,32 @@ const OkRs = () => {
             </Collapse>
           )
         })}
+        {isAdding && (
+          <Collapse>
+            <Card
+              sx={{
+                display: 'flex',
+                justifyContent: 'flex-start',
+                alignItems: 'center',
+                pl: 2,
+                px: 2,
+                pt: 2,
+                pb: error ? 3 : 2,
+              }}
+            >
+              <RadioButtonUncheckedIcon />
+              <AddItem
+                sx={{ ml: 2 }}
+                fullWidth
+                onSubmit={submit}
+                onCancel={handleDismiss}
+                onBlur={handleDismiss}
+                error={error}
+                onChange={() => error && setError(false)}
+              />
+            </Card>
+          </Collapse>
+        )}
       </TransitionGroup>
     </Box>
   )
