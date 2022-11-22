@@ -3,7 +3,7 @@ import { Box, Card, Checkbox, Chip, Collapse, Divider, IconButton, Typography } 
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import ProgressBar from '../common/ProgressBar'
-import Description from './Description'
+import Description from '../common/Description'
 import TrashButton from '../common/TrashButton'
 import OkrTitle from './OKRTitle'
 import StatusSelect from '../common/StatusSelect'
@@ -12,6 +12,7 @@ import UnfoldMoreDoubleIcon from '@mui/icons-material/UnfoldMoreDouble'
 import ExpandIcon from '@mui/icons-material/Expand'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import KeyboardArrowDownSharpIcon from '@mui/icons-material/KeyboardArrowDownSharp'
+import TaskBuilder from './TaskBuilder'
 
 const Okr = ({ title, description, onDelete, onChange = () => {} }) => {
   const [expanded, setExpanded] = useState(false)
@@ -56,6 +57,7 @@ const Okr = ({ title, description, onDelete, onChange = () => {} }) => {
         </Box>
         <Box p={3} pt={0}>
           <Description initialValue={description} />
+          <TaskBuilder />
         </Box>
       </Collapse>
     </Card>
