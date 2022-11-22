@@ -6,7 +6,7 @@ import CheckBoxRoundedIcon from '@mui/icons-material/CheckBoxRounded'
 import DescriptionRoundedIcon from '@mui/icons-material/DescriptionRounded'
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded'
 
-const AddToFeature = ({ title }) => {
+const AddToFeature = ({ title, onAdd = () => {} }) => {
   return (
     <Card
       sx={{
@@ -26,6 +26,7 @@ const AddToFeature = ({ title }) => {
         }}
       >
         <Button
+          onClick={() => onAdd('okr')}
           variant='outlined'
           startIcon={<CheckCircleOutlineRoundedIcon />}
           sx={{
@@ -36,6 +37,7 @@ const AddToFeature = ({ title }) => {
           OKRS
         </Button>
         <Button
+          onClick={() => onAdd('checklist')}
           variant='outlined'
           startIcon={<CheckBoxRoundedIcon />}
           sx={{
@@ -46,6 +48,7 @@ const AddToFeature = ({ title }) => {
           CHECKLIST
         </Button>
         <Button
+          onClick={() => onAdd('sprint')}
           variant='outlined'
           startIcon={<DirectionsRunRoundedIcon />}
           sx={{
@@ -56,6 +59,7 @@ const AddToFeature = ({ title }) => {
           SPRINTS
         </Button>
         <Button
+          onClick={() => onAdd('notes')}
           variant='outlined'
           startIcon={<DescriptionRoundedIcon />}
           sx={{
@@ -66,6 +70,7 @@ const AddToFeature = ({ title }) => {
           NOTES
         </Button>
         <Button
+          onClick={() => onAdd('tasks')}
           variant='outlined'
           startIcon={<ConstructionIcon />}
           sx={{

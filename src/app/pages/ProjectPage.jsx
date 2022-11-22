@@ -4,7 +4,6 @@ import { Box, Grid, Tab, Tabs, Typography } from '@mui/material'
 import TabContext from '@mui/lab/TabContext'
 import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
-import OkRs from '../features/OKRs'
 import AddToFeature from '../common/AddToFeature'
 import RenderFeature from '../features/RenderFeature'
 import uuid from 'react-uuid'
@@ -20,6 +19,14 @@ const ProjectPage = () => {
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
+  }
+
+  const handleAddFeature = (type) => {
+    const initialValue = {
+      id: uuid(),
+      type,
+    }
+    setLayout([...layout, initialValue])
   }
 
   return (
@@ -42,7 +49,7 @@ const ProjectPage = () => {
                 ))}
               </Grid>
               <Grid item xs={3}>
-                <AddToFeature title='Add to Project' />
+                <AddToFeature title='Add to Project' onAdd={handleAddFeature} />
               </Grid>
             </Grid>
           </TabPanel>
