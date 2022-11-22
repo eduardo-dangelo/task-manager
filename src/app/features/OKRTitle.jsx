@@ -7,7 +7,6 @@ const OkrTitle = ({ value, onUpdate = () => {} }) => {
   const [error, setError] = useState('')
 
   const submit = (fieldValue) => {
-    console.log('calle', fieldValue)
     let errorMessage = ''
     if (!fieldValue) errorMessage = 'Field cannot be empty.'
     errorMessage ? setError(errorMessage) : onUpdate(fieldValue)

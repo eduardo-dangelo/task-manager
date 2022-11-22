@@ -6,6 +6,7 @@ import ProgressBar from '../common/ProgressBar'
 import Description from './Description'
 import TrashButton from '../common/TrashButton'
 import OkrTitle from './OKRTitle'
+import StatusSelect from '../common/StatusSelect'
 
 const Okr = ({ title, description, onDelete, onChange = () => {} }) => {
   const [expanded, setExpanded] = useState(false)
@@ -32,7 +33,7 @@ const Okr = ({ title, description, onDelete, onChange = () => {} }) => {
         <Box flex={1}>
           <ProgressBar value={40} />
         </Box>
-        <Chip label='active' size='small' sx={{ ml: 2 }} />
+        <StatusSelect />
         <TrashButton className='hidden-button' onDelete={onDelete} sx={{ ml: 1 }} />
       </Box>
       <Collapse in={expanded}>
